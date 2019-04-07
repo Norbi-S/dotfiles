@@ -100,4 +100,6 @@ export EDITOR=vim
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias diff='colordiff'
+alias diff='colordiff -y'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

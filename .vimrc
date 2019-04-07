@@ -1,89 +1,37 @@
-" Don't try to be vi compatible
-set nocompatible
+"" General
+set number	" Show line numbers
+set linebreak	" Break lines at word (requires Wrap lines)
+set showbreak=+++	" Wrap-broken line prefix
+set textwidth=100	" Line wrap (number of cols)
+set showmatch	" Highlight matching brace
+set visualbell	" Use visual bell (no beeping)
 
-" Helps force plugins to load correctly when it is turned back on below
-filetype off
+set hlsearch	" Highlight all search results
+set smartcase	" Enable smart-case search
+set ignorecase	" Always case-insensitive
+set incsearch	" Searches for strings incrementally
 
-" Turn on syntax highlighting
-syntax enable
+set autoindent	" Auto-indent new lines
+set expandtab	" Use spaces instead of tabs
+set shiftwidth=4	" Number of auto-indent spaces
+set smartindent	" Enable smart-indent
+set smarttab	" Enable smart-tabs
+set softtabstop=4	" Number of spaces per Tab
 
-" For plugins to load correctly
-filetype plugin indent on
+"" Advanced
+set ruler	" Show row and column ruler information
 
-" TODO: Pick a leader key
-" let mapleader = ","
+set undolevels=1000	" Number of undo levels
+set backspace=indent,eol,start	" Backspace behaviour
 
-" Security
-set modelines=0
+"" Plugins
 
-" Show line numbers
-set number
+so ~/.vim/plugins.vim
 
-" Show file stats
-set ruler
+" Vim-airline
+set noshowmode
+let g:airline#extensions#tabline#enabled = 1
 
-" Blink cursor on error instead of beeping (grr)
-set visualbell
+" NERD Tree
+map <C-o> :NERDTreeToggle<CR>
 
-" Encoding
-set encoding=utf-8
-
-" Whitespace
-set wrap
-set formatoptions=tcqrn1
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set noshiftround
-set autoindent
-
-" Cursor motion
-set scrolloff=3
-set backspace=indent,eol,start
-set matchpairs+=<:> " use % to jump between pairs
-runtime! macros/matchit.vim
-
-" Move up/down editor lines
-nnoremap j gj
-nnoremap k gk
-
-" Allow hidden buffers
-set hidden
-
-" Rendering
-set ttyfast
-
-" Status bar
-set laststatus=2
-
-" Last line
-set showmode
-set showcmd
-
-" Searching
-nnoremap / /\v
-vnoremap / /\v
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set showmatch
-map <leader><space> :let @/=''<cr> " clear search
-
-" Remap help key.
-inoremap <F1> <ESC>:set invfullscreen<CR>a
-nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
-
-" Textmate holdouts
-
-" Formatting
-map <leader>q gqip
-
-" Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
