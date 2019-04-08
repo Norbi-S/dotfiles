@@ -102,4 +102,6 @@ export EDITOR=vim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias diff='colordiff -y'
 
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
