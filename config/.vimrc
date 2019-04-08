@@ -4,7 +4,7 @@ set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
 set textwidth=100	" Line wrap (number of cols)
 set showmatch	" Highlight matching brace
-set visualbell	" Use visual bell (no beeping)
+set hidden
 
 set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
@@ -24,6 +24,8 @@ set ruler	" Show row and column ruler information
 set undolevels=1000	" Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 
+set term=screen-256color
+
 "" Plugins
 
 so ~/.vim/plugins.vim
@@ -31,6 +33,11 @@ so ~/.vim/plugins.vim
 " Vim-airline
 set noshowmode
 let g:airline#extensions#tabline#enabled = 1
+let g:bufferline_echo = 0
+let g:airline_powerline_fonts = 1
+autocmd VimEnter *
+    \ let &statusline='%{bufferline#refresh_status()}'
+    \ .bufferline#get_status_string()
 
 " NERD Tree
 map <C-o> :NERDTreeToggle<CR>
