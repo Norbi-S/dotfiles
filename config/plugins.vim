@@ -12,5 +12,6 @@ Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
+Plug 'edkolev/tmuxline.vim'
 
 call plug#end()
