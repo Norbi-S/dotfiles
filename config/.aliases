@@ -1,0 +1,9 @@
+alias e="exit"
+alias c="clear"
+alias zconf="vim ~/.zshrc"
+alias aconf="vim ~/.aliases"
+alias reload="source ~/.zshrc"
+
+alias compstrt="pkill compton && nohup compton & "
+
+alias diff='colordiff -y'
