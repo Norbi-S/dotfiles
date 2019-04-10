@@ -29,7 +29,7 @@
     df = diff
     dff = diff --name-only
     lg = log -p
-    l = log --abrev-commit --pretty=oneline
+    l = log --abbrev-commit --pretty=oneline
     tree = log --graph --all --decorate -- pretty=oneline
 [push]
     default = simple
