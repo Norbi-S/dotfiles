@@ -3,10 +3,13 @@ set nocompatible
 syntax on
 colorscheme molokai
 
-set number	" Show line numbers
+set number          " Disable absolute line numbers
+set relativenumber	" Show relative line numbers
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
+set colorcolumn=80  " 80 chars ruler
 set textwidth=100	" Line wrap (number of cols)
+set scrolloff=5     " Minimal number of lines viisble above and below cursor
 set showmatch	" Highlight matching brace
 set hidden
 
@@ -29,6 +32,8 @@ set undolevels=1000	" Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 
 set term=screen-256color
+
+set autoread        " Auto reload
 
 "" Plugins
 
