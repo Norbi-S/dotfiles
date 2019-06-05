@@ -1,0 +1,13 @@
+agurodriguez.vscode-lbnf
+akamud.vscode-theme-onedark
+akamud.vscode-theme-onelight
+alefragnani.project-manager
+arthurwang.vsc-prolog
+christian-kohler.path-intellisense
+CoenraadS.bracket-pair-colorizer
+justusadam.language-haskell
+ms-python.python
+PKief.material-icon-theme
+rubbersheep.gi
+spywhere.guides
+VisualStudioExptTeam.vscodeintellicode
