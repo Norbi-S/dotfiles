@@ -1,0 +1,35 @@
+[user]
+    email = nbitxd@gmail.com
+    name = Norbi-S
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[color]
+    ui = true
+[alias]
+    st = status --short
+    ci = commit
+    cam = commit --amend
+    br = branch
+    co = checkout
+    df = diff
+    dff = diff --name-only
+    lg = log -p
+    l = log --abbrev-commit --pretty=oneline
+    tree = log --graph --all --decorate -- pretty=oneline
+[push]
+    default = simple
