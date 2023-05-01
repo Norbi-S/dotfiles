@@ -7,7 +7,6 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "flake8",
         "pyright",
         "stylua"
       }
