@@ -26,9 +26,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- Disable "Ex" mode
 vim.keymap.set("n", "Q", "<nop>")
 
--- Open tmux sessionizer
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
 -- Format buffer
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
