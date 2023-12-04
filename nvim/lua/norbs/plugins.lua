@@ -20,7 +20,10 @@ require("lazy").setup({
         lazy = true,
     },
 
-    { 'rose-pine/neovim', name = 'rose-pine' },
+    {
+        'rose-pine/neovim',
+        name = 'rose-pine'
+    },
 
     {
         'nvim-treesitter/nvim-treesitter',
@@ -35,9 +38,9 @@ require("lazy").setup({
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
 
-    { 'mbbill/undotree',     lazy = true },
+    { 'mbbill/undotree' },
 
-    { 'tpope/vim-fugitive',  lazy = true },
+    { 'tpope/vim-fugitive' },
 
     {
         'VonHeikemen/lsp-zero.nvim',
