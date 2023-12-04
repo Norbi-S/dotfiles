@@ -1,0 +1,5 @@
+VIM="nvim"
+
+export GOPATH=$HOME/go
+export GIT_EDITOR=$VIM
+
