@@ -1,3 +1,3 @@
 require("norbs.remap")
-require("norbs.packer")
+require("norbs.plugins")
 require("norbs.set")
