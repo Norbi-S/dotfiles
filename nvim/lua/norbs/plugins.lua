@@ -73,5 +73,9 @@ require("lazy").setup({
 
     {
         "github/copilot.vim",
+    },
+
+    {
+        "terrortylor/nvim-comment"
     }
 })
