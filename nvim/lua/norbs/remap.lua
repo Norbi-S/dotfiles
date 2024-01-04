@@ -35,3 +35,20 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Utilities for copying paths and filenames
+
+function YankPath()
+    local path = vim.fn.expand("%")
+    vim.fn.setreg("+", path)
+    print("Copied to clipboard: " .. path)
+end
+
+function YankFile()
+    local file = vim.fn.expand("%:t")
+    vim.fn.setreg("+", file)
+    print("Copied to clipboard: " .. file)
+end
+
+vim.keymap.set("n", "<leader>cp", YankPath)
+vim.keymap.set("n", "<leader>cf", YankFile)
