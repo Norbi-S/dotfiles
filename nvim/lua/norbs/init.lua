@@ -1,5 +1,4 @@
 require("norbs.remap")
-require("norbs.plugins")
 require("norbs.set")
 
 local augroup = vim.api.nvim_create_augroup

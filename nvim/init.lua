@@ -12,3 +12,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("norbs")
+require("lazy").setup("plugins")
