@@ -103,5 +103,8 @@ source ~/.zsh_profile
 
 alias vim="nvim"
 
+# setting up zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
 # opam configuration
 [[ ! -r /Users/norbs/.opam/opam-init/init.zsh ]] || source /Users/norbs/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
