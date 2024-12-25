@@ -68,3 +68,9 @@ vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
 vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
 vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
 
+-- Set up copilot autocomplete keybindings
+vim.keymap.set('i', '<C-l>', 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
