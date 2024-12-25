@@ -7,7 +7,7 @@ return {
     },
     config = function()
         require("mason-null-ls").setup({
-            ensure_installed = { "black" }
+            ensure_installed = { "black", "prettier" }
         })
 
         local null_ls = require("null-ls")
@@ -15,6 +15,7 @@ return {
         null_ls.setup({
             sources = {
                 null_ls.builtins.formatting.black,
+                null_ls.builtins.formatting.prettier,
             },
         })
     end
