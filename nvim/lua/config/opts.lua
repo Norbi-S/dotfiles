@@ -1,20 +1,24 @@
--- Enable line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+local set = vim.opt
 
-vim.opt.wrap = false
+-- Enable line numbers
+set.number = true
+set.relativenumber = true
+
+set.wrap = false
 
 -- Default tab width (0 uses `tabstop` value)
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 0
-vim.opt.shiftwidth = 0
+set.tabstop = 4
+set.softtabstop = 0
+set.shiftwidth = 0
 
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+set.undodir = os.getenv("HOME") .. "/.vim/undodir"
+set.undofile = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+set.hlsearch = false
+set.incsearch = true
 
-vim.opt.scrolloff = 8
+set.scrolloff = 8
 
-vim.opt.colorcolumn = "80"
+set.colorcolumn = "80"
+
+set.signcolumn = "yes:1"
