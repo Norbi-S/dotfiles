@@ -1,0 +1,7 @@
+font-size = 19
+window-width = 160
+window-height = 40
+shell-integration = zsh
+cursor-style = block
+theme = tokyonight
+link-url = true
