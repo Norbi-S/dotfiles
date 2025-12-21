@@ -1,19 +1,24 @@
-local yank_path = function()
-  local path = vim.fn.expand("%")
-  vim.fn.setreg("+", path)
-  print("Copied to clipboard: " .. path)
+local function copy_to_clipboard(str)
+  vim.fn.setreg("+", str)
+  print("Copied to clipboard: " .. str)
+end
+
+local yank_absolute_path = function()
+  local path = vim.fn.expand("%:p")
+  copy_to_clipboard(path)
+end
+
+local yank_relative_path = function()
+  local path = vim.fn.expand("%:.")
+  copy_to_clipboard(path)
 end
 
 local yank_file = function()
-  local path = vim.fn.expand("%")
-  vim.fn.setreg("+", path)
-  print("Copied to clipboard: " .. path)
+  local path = vim.fn.expand("%:t")
+  copy_to_clipboard(path)
 end
 
--- Register commands
-vim.api.nvim_create_user_command("YankPath", yank_path, {})
-vim.api.nvim_create_user_command("YankFile", yank_file, {})
-
 -- Keybindings
-vim.keymap.set("n", "<leader>cp", "<cmd>YankPath<CR>")
-vim.keymap.set("n", "<leader>cf", "<cmd>YankFile<CR>")
+vim.keymap.set("n", "<leader>cp", yank_relative_path)
+vim.keymap.set("n", "<leader>ca", yank_absolute_path)
+vim.keymap.set("n", "<leader>cf", yank_file)

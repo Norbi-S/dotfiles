@@ -36,8 +36,6 @@ return {
       end)
 
       require("config.telescope.multigrep").setup()
-
-      vim.keymap.set("n", "<leader>pe", "<cmd>Telescope harpoon marks<CR>")
     end
   }
 }

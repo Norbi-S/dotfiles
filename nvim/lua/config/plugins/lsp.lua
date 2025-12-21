@@ -16,8 +16,30 @@ return {
       }
     },
     config = function()
+      -- Language servers to setup
+      local servers = {
+        "lua_ls",
+        -- "zls",   -- Zig LSP
+        -- "gopls", -- Go LSP
+        -- PHP LSPs
+        -- "phpactor",
+        -- "intelephense",
+        -- Ruby LSPs
+        -- "ruby_lsp",
+        -- "rubocop",
+        "pylsp", -- Python LSP
+        -- "ocamllsp", -- Ocaml LSP
+        -- C++ LSPs
+        "cmake",
+        "clangd",
+        -- "ts_ls", -- Javascript LSPs
+      }
+
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      require("lspconfig").lua_ls.setup { capabilities = capabilities }
+      for _, server in ipairs(servers) do
+        vim.lsp.config(server, { capabilities = capabilities })
+        vim.lsp.enable(server)
+      end
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
@@ -45,6 +67,7 @@ return {
           vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
           vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
           vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+          vim.keymap.set('n', '<leader>vh', '<cmd>ClangdSwitchSourceHeader<CR>')
           vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         end
       })
