@@ -1,11 +1,12 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
+    tag = 'v0.2.2',
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       { "ThePrimeagen/harpoon" },
+	  { "nvim-treesitter/nvim-treesitter" },
     },
     config = function()
       require('telescope').setup {
@@ -15,7 +16,12 @@ return {
           }
         },
         extensions = {
-          fzf = {}
+          fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		  }
         }
       }
 
