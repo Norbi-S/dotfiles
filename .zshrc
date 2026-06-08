@@ -95,7 +95,14 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
+alias __reload__="source ~/.zshrc"
+alias __edit__="vim ~/.zshrc"
+
+# tmux-sessionizer
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^g "lazygit\n"
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -104,7 +111,8 @@ source ~/.zsh_profile
 alias vim="nvim"
 
 # setting up zoxide
-eval "$(zoxide init --cmd cd zsh)"
+# eval "$(zoxide init --cmd cd zsh)"
 
 # opam configuration
-[[ ! -r /Users/norbs/.opam/opam-init/init.zsh ]] || source /Users/norbs/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+# [[ ! -r /Users/norbs/.opam/opam-init/init.zsh ]] || source /Users/norbs/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
