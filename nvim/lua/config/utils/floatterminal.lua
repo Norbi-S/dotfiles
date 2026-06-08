@@ -1,3 +1,7 @@
+local executors = require("config.utils.executors")
+
+-- Terminal window management
+
 local state = {
   floating = {
     buf = -1,
@@ -40,18 +44,23 @@ local function create_floating_window(opts)
 end
 
 local job_id = 0
-local toggle_terminal = function()
+local function toggle_terminal()
   if not vim.api.nvim_win_is_valid(state.floating.win) then
     state.floating = create_floating_window { buf = state.floating.buf }
     if vim.bo[state.floating.buf].buftype ~= "terminal" then
       vim.cmd.terminal()
     end
     job_id = vim.bo.channel
+    vim.keymap.set("n", "<esc>", function()
+      vim.api.nvim_win_hide(state.floating.win)
+    end, { buffer = state.floating.buf })
     vim.cmd.startinsert()
   else
     vim.api.nvim_win_hide(state.floating.win)
   end
 end
+
+-- Executing commands
 
 local function run_cmd(cmd)
   -- Show terminal if it's hidden
@@ -62,88 +71,47 @@ local function run_cmd(cmd)
   vim.fn.chansend(job_id, { cmd })
 end
 
--- Functions which define default execution
-
----@class CommandOpts
----@field absolute_path string
----@field relative_path string
----@field file_name string
-
----@class FileMatchRule
----@field file_pattern string
----@field cmd fun(opts: CommandOpts): string?
-
----@class GroupMatchRule
----@field group_pattern string
----@field cmds (GroupMatchRule|FileMatchRule)[]
-
----@type GroupMatchRule[]
-local cmd_mapping = {
-  {
-    group_pattern = ".*",
-    cmds = {
-      {
-        file_pattern = "%.sh$",
-        cmd = function(opts)
-          return "source " .. opts.absolute_path .. "\r\n"
-        end
-      },
-      {
-        file_pattern = "%.py$",
-        cmd = function(opts)
-          return "python3 " .. opts.file_name .. "\r\n"
-        end
-      }
-    }
-  }
-}
-
----@return string?
-local function get_cmd_to_run()
-  ---@type CommandOpts
-  local opts = {
-    absolute_path = vim.fn.expand("%:p"),
-    relative_path = vim.fn.expand("%:."),
-    file_name = vim.fn.expand("%:t"),
-  }
-
-  ---@param rules (GroupMatchRule|FileMatchRule)[]
-  ---@return string?
-  local function __get_cmds_to_run(rules)
-    for _, rule in ipairs(rules) do
-      if rule["group_pattern"] ~= nil then
-        if string.match(opts.absolute_path, rule.group_pattern) then
-          res = __get_cmds_to_run(rule.cmds)
-          if res ~= nil then
-            return res
-          end
-        end
-      else
-        if string.match(opts.absolute_path, rule.file_pattern) then
-          return rule.cmd(opts)
-        end
-      end
+local function select_and_run_cmd(cmds)
+  vim.ui.select(cmds, {
+    prompt = 'Select command to execute:',
+    format_item = function(item)
+      return item
+    end,
+  }, function(choice)
+    if choice then
+      run_cmd(choice)
+    else
+      print('Selection cancelled')
     end
-  end
-
-  return __get_cmds_to_run(cmd_mapping)
+  end)
 end
 
--- Registering commands, keyboard shortcuts
+-- Register mappings and commands
 
 vim.api.nvim_create_user_command("FloatTerminal", toggle_terminal, {})
 
 vim.keymap.set("n", "<C-space>", "<cmd>FloatTerminal<CR>")
 vim.keymap.set("n", "<leader>gx", function()
-  local cmd = get_cmd_to_run()
-  if cmd ~= nil then
-    run_cmd(cmd)
-  else
+  local cmds = executors.get_cmds_to_run()
+
+  if table.getn(cmds) == 0 then
     toggle_terminal()
   end
+
+  run_cmd(cmds[1])
+end)
+vim.keymap.set("n", "<leader>gX", function()
+  local cmds = executors.get_cmds_to_run()
+
+  if table.getn(cmds) == 0 then
+    print("No commands to run")
+    return
+  end
+
+  select_and_run_cmd(cmds)
 end)
 
--- Return as module
+-- Return as a module
 
 local M = {}
 
