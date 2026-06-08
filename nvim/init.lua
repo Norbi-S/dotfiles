@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Configure built in terminal
-vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
+vim.keymap.set("t", "<C-Space>", "<C-\\><C-n>")
 vim.api.nvim_create_autocmd('TermOpen', {
   group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
   callback = function()
@@ -60,3 +60,9 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.opt.relativenumber = false
   end,
 })
+
+-- tmux-sessionizer
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- Set up utils
+require("config.utils")

@@ -33,6 +33,7 @@ return {
         "cmake",
         "clangd",
         -- "ts_ls", -- Javascript LSPs
+        "sourcekit", -- Swift LSP
       }
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
