@@ -4,7 +4,7 @@ local set = vim.opt
 set.number = true
 set.relativenumber = true
 
-set.wrap = false
+set.wrap = true
 
 -- Default tab width (0 uses `tabstop` value)
 set.tabstop = 4
@@ -13,6 +13,9 @@ set.shiftwidth = 0
 
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set.undofile = true
+
+set.ignorecase = true
+set.smartcase = true
 
 set.hlsearch = false
 set.incsearch = true
