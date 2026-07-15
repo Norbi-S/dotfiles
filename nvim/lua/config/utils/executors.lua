@@ -24,7 +24,49 @@ local cmd_mapping = {
         cmd = function(opts)
           return "bash " .. opts.absolute_path .. "\r\n"
         end
-      }
+      },
+      {
+        file_pattern = "%.zig",
+        cmd = function()
+          return "zig build\r\n"
+        end
+      },
+      {
+        file_pattern = "%.zig",
+        cmd = function()
+          return "zig build run\r\n"
+        end
+      },
+      {
+        file_pattern = "%.zig",
+        cmd = function()
+          return "zig build test\r\n"
+        end
+      },
+      {
+        file_pattern = "%.rs",
+        cmd = function()
+          return "cargo build\r\n"
+        end
+      },
+      {
+        file_pattern = "%.rs",
+        cmd = function()
+          return "cargo run\r\n"
+        end
+      },
+      {
+        file_pattern = "%.rs",
+        cmd = function()
+          return "cargo test\r\n"
+        end
+      },
+      {
+        file_pattern = "Cargo.toml",
+        cmd = function()
+          return "cargo build\r\n"
+        end
+      },
     }
   },
 }

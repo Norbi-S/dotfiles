@@ -16,6 +16,9 @@ return {
       }
     },
     config = function()
+      -- vim.diagnostic.config({ virtual_lines = true })
+      vim.diagnostic.config({ virtual_text = true })
+
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       -- Lua LSP
       vim.lsp.config("lua_ls", {
@@ -53,7 +56,7 @@ return {
       vim.lsp.enable("lua_ls")
       -- Language servers to setup
       local servers = {
-        -- "lua_ls",
+        "lua_ls",
         "zls", -- Zig LSP
         -- "gopls", -- Go LSP
         -- PHP LSPs
@@ -69,6 +72,8 @@ return {
         -- "clangd",
         -- "ts_ls", -- Javascript LSPs
         -- "sourcekit", -- Swift LSP
+        "rust_analyzer", -- Rust LSP
+        "ols",           -- Odin LSP
       }
 
       for _, server in ipairs(servers) do
@@ -95,12 +100,12 @@ return {
           -- Keybindings
           local opts = { buffer = args.buf, remap = false }
 
-          vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+          -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
           vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
           vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
           vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
           vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-          vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+          -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
           vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
           vim.keymap.set('n', '<leader>vh', '<cmd>ClangdSwitchSourceHeader<CR>')
           vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)

@@ -14,7 +14,17 @@ return {
     } },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
     config = function()
-      require "oil".setup()
+      require "oil".setup({
+        columns = {
+          "icon",
+          -- "permissions",
+          -- "size",
+          -- "mtime",
+        },
+        confirmation = {
+          border = "single",
+        },
+      })
       vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>")
     end
   }

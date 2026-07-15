@@ -27,7 +27,8 @@ require("config.opts")
 require("lazy").setup({
   spec = {
     -- set color scheme
-    { "folke/tokyonight.nvim",  config = function() vim.cmd.colorscheme "tokyonight" end },
+    -- { "folke/tokyonight.nvim",  config = function() vim.cmd.colorscheme "tokyonight" end },
+    { "catppuccin/nvim",        config = function() vim.cmd.colorscheme "catppuccin-latte" end },
     -- import your plugins
     { import = "config.plugins" },
   },
